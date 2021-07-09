@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE generatorConfiguration
+        PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+<generatorConfiguration>
+    <context id="zhhf" targetRuntime="MyBatis3">
+<!--        <plugin type="org.ihansen.mbp.extend.CustomPlugin">-->
+<!--            <property name="dbType" value="MYSQL"/>-->
+<!--        </plugin>-->
+
+<!--数据库链接地址账号密码，根据情况修改连接url-->
+        <jdbcConnection
+                driverClass="com.mysql.cj.jdbc.Driver"
+                connectionURL="jdbc:mysql://127.0.0.1:3306/testkey?serverTimezone=Asia/Shanghai&amp;useUnicode=true&amp;characterEncoding=UTF-8"
+                userId="root"
+                password="123456"
+        >
+            <property name="nullCatalogMeansCurrent" value="true"/>
+        </jdbcConnection>
+
+<!--       mybatis 生成实体类的放在com.cnds.demo1.bean.mg，位置在./src/main/java -->
+        <!--生成Model类存放位置，model层定义java实体，一般的实体类对应一个数据表，其中的属性对应数据表中的字段。-->
+        <javaModelGenerator
+                targetPackage="com.cnds.demo1.bean.mg"
+                targetProject="./src/main/java"
+        />
+
+        <!--生成映射文件存放位置-->
+        <sqlMapGenerator
+                targetPackage="mapping.mg"
+                targetProject="./src/main/resources"
+        />
+
+        <!--生成Dao类存放位置-->
+        <javaClientGenerator
+                type="XMLMAPPER"
+                targetPackage="com.cnds.demo1.bean.repository.mg"
+                targetProject="./src/main/java"
+        />
+
+        <!--生成对应表及类名-->
+        <table tableName="goods" domainObjectName="Goods"/>
+<!--        <table tableName="test_name" domainObjectName="TestName">-->
+<!--            <generatedKey column="id" sqlStatement="MySql" identity="true"/>-->
+<!--        </table>-->
+    </context>
+</generatorConfiguration>
